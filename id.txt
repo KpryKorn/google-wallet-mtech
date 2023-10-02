@@ -1,0 +1,12 @@
+Issuer ID : 3388000000022272047
+---
+// cmd à copier dans le terminal shell
+$env:GOOGLE_APPLICATION_CREDENTIALS="C:\Users\SROFFINI\Documents\google-wallet-mtech\feisty-nectar-399507-6311475972cc.json"
+
+OU
+
+// cmd à copier dans le terminal bash
+export GOOGLE_APPLICATION_CREDENTIALS="/Users/sacharoffini/Documents/Web/google-wallet-mtech/feisty-nectar-399507-6311475972cc.json"
+
+
+une session = une clé de service
