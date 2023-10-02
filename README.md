@@ -18,4 +18,4 @@ Pour utiliser cette application, il y a plusieurs prérequis :
 - Installer les dépendances nécessaires au projet (Serveur Express, JSON Web Token), dans le dossier web `npm install`
 - Ouvrir le fichier `id.txt` et copier la commande Shell (Windows) ou Bash (Mac) en fonction du système d'exploitation, puis éxécuter cette commande dans son terminal
 - Exécuter `node app.js` dans son terminal, le serveur run sur `localhost:3000`
-- Renseigner le mail à associer au Pass à créer, that's it!
+- Renseigner le mail à associer au Pass à créer, that's it
