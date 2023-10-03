@@ -24,10 +24,10 @@ Pour utiliser cette application, il y a plusieurs prérequis :
 
 ## À savoir
 
-### Une adresse email renseignée dans l'input === un ID === un objet (pass wallet)
+### Une valeur renseignée dans l'input === un ID === un objet (pass wallet)
 
-Cela signifie qu'une adresse mail déjà renseignée ne pourra pas être à l'origine de la création d'un nouveau pass
+Cela signifie qu'une valeur déjà renseignée ne pourra pas être à l'origine de la création d'un nouveau pass
 
 ### Le compte Google relié en tant qu'administrateur de ces pass (et donc récepteur) est Roffini Sacha
 
-Les pass vont être ajoutés au compte Google de ce dernier, indépendemment de l'adresse utilisée pour généner l'ID
+Les pass vont être ajoutés au compte Google de ce dernier, indépendemment de la valeur utilisée pour généner l'ID
