@@ -270,7 +270,7 @@ async function createPassObject(req, res) {
     },
   };
 
-  // FIX : le wallet généré dépend de l'adresse mail (et donc de l'ID) utilisé et non du code ??
+  // FIX : le wallet généré dépend de l'adresse mail (et donc de l'ID) unique ??
   const token = jwt.sign(claims, credentials.private_key, {
     algorithm: "RS256",
   });
