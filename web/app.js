@@ -26,7 +26,7 @@ const jwt = require("jsonwebtoken");
 const issuerId = "3388000000022272047";
 
 // TODO: Define Class ID
-const classId = `${issuerId}.mgen_class`;
+const classId = `${issuerId}.test_class`;
 
 const baseUrl = "https://walletobjects.googleapis.com/walletobjects/v1";
 
@@ -51,7 +51,7 @@ async function createPassClass(req, res) {
                 firstValue: {
                   fields: [
                     {
-                      fieldPath: 'object.textModulesData["numSecuSociale"]',
+                      fieldPath: "object.textModulesData['numSecuSociale']",
                     },
                   ],
                 },
@@ -60,47 +60,41 @@ async function createPassClass(req, res) {
                 firstValue: {
                   fields: [
                     {
-                      fieldPath: 'object.textModulesData["periodeValidite"]',
+                      fieldPath: "object.textModulesData['periodeValidite']",
                     },
                   ],
                 },
               },
             },
           },
-        ],
-      },
-      detailsTemplateOverride: {
-        detailsItemInfos: [
           {
-            item: {
-              firstValue: {
-                fields: [
-                  {
-                    fieldPath: 'class.imageModulesData["event_banner"]',
-                  },
-                ],
+            threeItems: {
+              startItem: {
+                firstValue: {
+                  fields: [
+                    {
+                      fieldPath: "object.textModulesData['numAdherent']",
+                    },
+                  ],
+                },
               },
-            },
-          },
-          {
-            item: {
-              firstValue: {
-                fields: [
-                  {
-                    fieldPath: 'class.textModulesData["game_overview"]',
-                  },
-                ],
+              middleItem: {
+                firstValue: {
+                  fields: [
+                    {
+                      fieldPath: "object.textModulesData['numAmc']",
+                    },
+                  ],
+                },
               },
-            },
-          },
-          {
-            item: {
-              firstValue: {
-                fields: [
-                  {
-                    fieldPath: 'class.linksModuleData.uris["official_site"]',
-                  },
-                ],
+              endItem: {
+                firstValue: {
+                  fields: [
+                    {
+                      fieldPath: "object.textModulesData['typeConv']",
+                    },
+                  ],
+                },
               },
             },
           },
@@ -118,7 +112,6 @@ async function createPassClass(req, res) {
     });
 
     console.log("Class already exists");
-    console.log(response);
   } catch (err) {
     if (err.response && err.response.status === 404) {
       // Class does not exist
@@ -157,37 +150,113 @@ async function createPassObject(req, res) {
     cardTitle: {
       defaultValue: {
         language: "fr-FR",
-        value: "Carte Adhérent MGEN",
+        value: "MCFLY Marty",
       },
     },
     subheader: {
       defaultValue: {
         language: "fr-FR",
-        value: "Adhérent",
+        value: "Carte d'Adhérent",
       },
     },
     header: {
       defaultValue: {
         language: "fr-FR",
-        value: "MCFLY Marty",
+        value: "TIERS PAYANT MUTUALISTE",
       },
     },
     textModulesData: [
       {
+        id: "numSecuSociale",
         header: "N° SÉCURITÉ SOCIALE",
         body: "2 73 12 22 000 000 55",
-        id: "numSecuSociale",
       },
       {
+        id: "periodeValidite",
         header: "PÉRIODE DE VALIDITÉ",
         body: "du 01/01/2021 au 31/12/2021",
-        id: "periodeValidite",
+      },
+      {
+        id: "numAdherent",
+        header: "N° ADHÉRENT",
+        body: "012284",
+      },
+      {
+        id: "numAmc",
+        header: "N° AMC",
+        body: "774 734 488",
+      },
+      {
+        id: "typeConv",
+        header: "TYPE CONV.",
+        body: "MU",
+      },
+      {
+        id: "detailsAnnuaire",
+        header: "Mutuelle inscrite dans l'annuaire AMC",
+        body: "",
+      },
+      {
+        id: "teletransmission",
+        header: "Télétransmission hors sésame vitale",
+        body: "Code Télétransmission : 75044075",
+      },
+      {
+        id: "garantieTiersPayant",
+        header: "Garantie Santé Tiers Payant",
+        body: "Les taux s'appliquent sur la base de remboursement de la Sécurité Sociale",
+      },
+      {
+        id: "sagesFemmes",
+        header: "Médecins - Sages Femmes",
+        body: "Y compris radiologues",
+      },
+      {
+        id: "percSecuSociale",
+        header: "",
+        body: "Sécurité sociale à 65% : 100% \nSécurité sociale à 30% : 100% \nSécurité sociale à 15% : 15%",
+      },
+      {
+        id: "dispositifsMedicaux",
+        header: "Dispositifs Médicaux",
+        body: "(Hors optique et aides auditives) \n100%",
+      },
+      {
+        id: "labos",
+        header: "Laboratoires",
+        body: "100%",
+      },
+      {
+        id: "transporteurs",
+        header: "Transporteurs",
+        body: "100%",
+      },
+      {
+        id: "centreSante",
+        header: "Centres de santé (hors dentaire)",
+        body: "100%",
+      },
+      {
+        id: "soinsExternes",
+        header: "Soins externes (hors dentaire)",
+        body: "100%",
+      },
+      {
+        id: "cureThermale",
+        header: "Cures thermales (hors hébergement)",
+        body: "100%",
+      },
+      {
+        id: "autresCategories",
+        header: "Autres catégories de professionnels de santé",
+        body: "(dentaire, optique, aides auditives : hors dispositifs de conventionnement avec la mutuelle) \n100%",
       },
     ],
     barcode: {
       type: "QR_CODE",
       value: `${objectId}`,
     },
+    hexBackgroundColor: "#6AA517",
   };
 
   // TODO: Create the signed JWT and link
@@ -201,10 +270,10 @@ async function createPassObject(req, res) {
     },
   };
 
+  // FIX : le wallet généré dépend de l'adresse mail (et donc de l'ID) utilisé et non du code ??
   const token = jwt.sign(claims, credentials.private_key, {
     algorithm: "RS256",
   });
-  console.log(token);
   const saveUrl = `https://pay.google.com/gp/v/save/${token}`;
 
   res.send(`<a href='${saveUrl}'><img src='wallet-button.png'></a>`);
