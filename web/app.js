@@ -1,4 +1,5 @@
 require("dotenv").config();
+const checkIfObjectExists = require("./utils.js");
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -85,7 +86,7 @@ async function createPassClass(req, res) {
     });
     console.log("Class already exists");
   } catch (err) {
-    if (err.response && err.response.status === 404) {
+    if (err.response?.status === 404) {
       const response = await httpClient.request({
         url: `${baseUrl}/genericClass`,
         method: "POST",
@@ -102,11 +103,28 @@ async function createPassClass(req, res) {
 }
 
 async function createPassObject(req, res) {
-  const objectSuffix = `${req.body.email.replace(/[^\w.-]/g, "_")}`;
-  const objectId = `${issuerId}.${objectSuffix}`;
+  let objectId;
+  while (true) {
+    const randomNumber = Math.floor(Math.random() * 1000000);
+    const objectSuffix = `${req.body.nom.toLowerCase()}_${randomNumber}`;
+    objectId = `${issuerId}.${objectSuffix}`;
 
+    console.log(
+      "Tentative de création de l'objet avec l'ID généré : " + objectId
+    );
+
+    // Vérifie si l'objet existe déjà
+    const objectExists = await checkIfObjectExists(objectId);
+
+    if (!objectExists) {
+      console.log("L'objet n'existe pas encore, on peut le créer");
+      break;
+    } else {
+      console.log("L'objet existe déjà, on en génère un nouveau");
+    }
+  }
   const genericObject = {
-    id: `${objectId}`,
+    id: objectId,
     classId: classId,
     genericType: "GENERIC_TYPE_UNSPECIFIED",
     hexBackgroundColor: "#6AA517",
