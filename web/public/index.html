@@ -23,10 +23,10 @@ the License.
       window.addEventListener("load", () => {
         document.getElementById("form").addEventListener("submit", (e) => {
           e.preventDefault();
-          const email = document.getElementById("email").value;
+          const nom = document.getElementById("nom").value;
           fetch(`/`, {
             method: "POST",
-            body: `email=${email}`,
+            body: `nom=${nom}`,
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
           })
             .then((res) => {
@@ -48,9 +48,9 @@ the License.
   <body>
     <div id="content">
       <form id="form">
-        <p>Enter the pass ID to generate a new pass:</p>
-        <input required id="email" placeholder="Enter the pass ID" />
-        <input type="submit" value="Create pass" id="submit" />
+        <p>Entrez votre nom pour générer un nouveau pass</p>
+        <input required id="nom" placeholder="Votre nom.." />
+        <input type="submit" value="Créer un pass" id="submit" />
         <div id="button"></div>
       </form>
     </div>
