@@ -32,6 +32,7 @@ Les pass vont être ajoutés au compte Google de ce dernier, indépendemment de 
 
 # Potentielle archi du projet full stack
 
+```
 my-app/
 ├── client/
 │ ├── public/
@@ -54,3 +55,4 @@ my-app/
 │ │ ├── node_modules/
 │ │ ├── app.js
 │ │ ├── package.json
+```
