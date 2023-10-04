@@ -27,3 +27,30 @@ Pour utiliser cette application, il y a plusieurs prérequis :
 ### Le compte Google relié en tant qu'administrateur de ces pass (et donc récepteur) est Roffini Sacha
 
 Les pass vont être ajoutés au compte Google de ce dernier, indépendemment de la valeur utilisée pour généner l'ID
+
+---
+
+# Potentielle archi du projet full stack
+
+my-app/
+├── client/
+│ ├── public/
+│ ├── src/
+│ │ ├── components/
+│ │ ├── App.js
+│ │ ├── index.js
+│ ├── package.json
+│ ├── README.md
+├── server/
+│ ├── common/ (Code serveur partagé entre Android et Apple)
+│ │ ├── utils.js
+│ ├── android/
+│ │ ├── public/
+│ │ ├── node_modules/
+│ │ ├── app.js
+│ │ ├── package.json
+│ ├── apple/
+│ │ ├── public/
+│ │ ├── node_modules/
+│ │ ├── app.js
+│ │ ├── package.json
