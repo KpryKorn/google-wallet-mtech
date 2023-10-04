@@ -22,11 +22,7 @@ Pour utiliser cette application, il y a plusieurs prérequis :
 
 ---
 
-## À savoir
-
-### Une valeur renseignée dans l'input === un ID === un objet (pass wallet)
-
-Cela signifie qu'une valeur déjà renseignée ne pourra pas être à l'origine de la création d'un nouveau pass
+# À savoir
 
 ### Le compte Google relié en tant qu'administrateur de ces pass (et donc récepteur) est Roffini Sacha
 
