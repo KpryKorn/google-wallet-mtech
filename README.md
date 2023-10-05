@@ -33,26 +33,35 @@ Les pass vont être ajoutés au compte Google de ce dernier, indépendemment de 
 # Archi du projet
 
 ```
-my-app/
-├── client/
+wallet-mtech/
+├── client/ (Application React)
+│ ├── node_modules/
 │ ├── public/
 │ ├── src/
 │ │ ├── components/
-│ │ ├── App.js
-│ │ ├── index.js
-│ ├── package.json
-│ ├── README.md
-├── server/
-│ ├── common/ (Code serveur partagé entre Android et Apple)
-│ │ ├── utils.js
+│ │ ├── assets/
+│ │ ├── App.jsx
+│ │ ├── main.jsx
+│ │ ├── index.css
+│ ├── .eslintrc-cjs
+│ ├── .gitignore
+│ ├── index.html
+│ ├── package.json/
+│ ├── vite.config.js
+├── server/ (Application Express)
 │ ├── android/
 │ │ ├── public/
-│ │ ├── node_modules/
 │ │ ├── app.js
-│ │ ├── package.json
-│ ├── apple/
+│ ├── common/ (Code serveur partagé entre Android et Apple)
+│ │ ├── utils.js
+│ ├── iOS/
 │ │ ├── public/
-│ │ ├── node_modules/
 │ │ ├── app.js
-│ │ ├── package.json
+│ ├── node_modules/ (Packages serveur)
+│ ├── package.json/
+├── .env
+├── .gitignore
+├── id.txt
+├── LICENCE
+├── README.md
 ```
