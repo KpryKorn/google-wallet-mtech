@@ -1,12 +1,13 @@
 Issuer ID : 3388000000022272047
 ---
-// cmd à copier dans le terminal shell
+// cmd à copier dans le terminal shell À LA RACINE DU PROJET
 $env:GOOGLE_APPLICATION_CREDENTIALS="C:\Users\SROFFINI\Documents\google-wallet-mtech\feisty-nectar-399507-6311475972cc.json"
 
 OU
 
-// cmd à copier dans le terminal bash
-export GOOGLE_APPLICATION_CREDENTIALS="/Users/sacharoffini/Documents/Web/google-wallet-mtech/feisty-nectar-399507-6311475972cc.json"
+// cmd à copier dans le terminal bash À LA RACINE DU PROJET
+export GOOGLE_APPLICATION_CREDENTIALS="/Users/sacharoffini/Documents/Web/google-wallet-mtech/server/android/feisty-nectar-399507-6311475972cc.json"
+
 
 
 une session = une clé de service

@@ -1,5 +1,6 @@
 require("dotenv").config();
-const checkIfObjectExists = require("./utils.js");
+
+const checkIfObjectExists = require("../common/utils.js");
 
 const express = require("express");
 const bodyParser = require("body-parser");

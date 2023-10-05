@@ -30,7 +30,7 @@ Les pass vont être ajoutés au compte Google de ce dernier, indépendemment de 
 
 ---
 
-# Potentielle archi du projet full stack
+# Archi du projet
 
 ```
 my-app/
