@@ -1,3 +1,13 @@
+/* GENERAL CLASSES */
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -14,6 +24,11 @@
   -webkit-text-size-adjust: 100%;
 }
 
+img {
+  max-width: 100%;
+  max-width: 300px;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -23,10 +38,23 @@ a:hover {
   color: #535bf2;
 }
 
-body {
+ul {
+  list-style-type: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
   margin: 0;
-  display: flex;
-  place-items: center;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+body {
   min-width: 320px;
   min-height: 100vh;
 }
@@ -36,7 +64,8 @@ h1 {
   line-height: 1.1;
 }
 
-button {
+button,
+input {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -57,13 +86,80 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: #242424;
+    background-color: rgba(255, 255, 255, 0.87);
   }
   a:hover {
     color: #747bff;
   }
-  button {
+  button,
+  input {
     background-color: #f9f9f9;
   }
+}
+
+/* UTILITY CLASSES */
+
+#root {
+  margin-inline: auto;
+  width: min(90%, 70.5rem);
+}
+
+.split {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
+
+@media (min-width: 40em) {
+  .split {
+    flex-direction: row;
+  }
+  .split > * {
+    flex-basis: 100%;
+  }
+}
+
+/* HERO SECTION */
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-block: 2em;
+  height: 80px;
+}
+
+.hero__text {
+  text-align: justify;
+}
+
+.hero__img {
+  display: flex;
+  justify-content: center;
+}
+
+/* FORMULAIRE ADHÉRENT */
+
+.formContainer,
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.formContainer {
+  margin-block: 2em;
+}
+
+input {
+  cursor: auto;
+  display: block;
+  width: 100%;
+}
+
+label {
+  font-weight: 500;
 }
