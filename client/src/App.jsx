@@ -1,11 +1,9 @@
+import DesktopView from "./components/Views/DesktopView";
 import MobileView from "./components/Views/MobileView";
+import { isUserAgentMobile } from "./lib/utils";
 
 function App() {
-  return (
-    <>
-      <MobileView />
-    </>
-  );
+  return <>{isUserAgentMobile() ? <MobileView /> : <DesktopView />}</>;
 }
 
 export default App;

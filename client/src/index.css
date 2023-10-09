@@ -173,3 +173,11 @@ input {
 label {
   font-weight: 500;
 }
+
+/* VUE PC */
+
+.desktop-main {
+  text-align: center;
+  font-weight: 600;
+  font-size: 2rem;
+}
