@@ -76,6 +76,9 @@ input {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+button {
+  background-color: #6aa517;
+}
 button:hover {
   border-color: #646cff;
 }
@@ -95,6 +98,10 @@ button:focus-visible {
   button,
   input {
     background-color: #f9f9f9;
+  }
+  button {
+    background-color: #6aa517;
+    color: white;
   }
 }
 
@@ -152,6 +159,9 @@ form {
 }
 .formContainer {
   margin-block: 2em;
+}
+.formContainer span {
+  color: red;
 }
 
 input {
