@@ -8,9 +8,7 @@ function AppleView() {
       <div className="logo">
         <img src={logoMGEN} alt="Logo de la MGEN" />
       </div>
-      <p className="device-check">
-        Connecté sur un appareil {navigator.userAgentData.platform}
-      </p>
+      <p className="device-check">Connecté sur un appareil iOS</p>
       <main className="split">
         <div className="hero__text">
           <p>

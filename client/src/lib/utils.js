@@ -3,7 +3,10 @@
  * @returns {boolean} true si userAgent est un mobile
  */
 export const isUserAgentMobile = () => {
-  return navigator.userAgentData.mobile;
+  const UA = navigator.userAgent;
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    UA
+  );
 };
 
 /**
@@ -11,6 +14,6 @@ export const isUserAgentMobile = () => {
  * @returns {boolean} true si userAgent est un mobile Apple
  */
 export const isUserAgentIOS = () => {
-  const platformOS = navigator.userAgentData.platform;
+  const platformOS = navigator.userAgent;
   return /iPhone|iPad|iPod/i.test(platformOS);
 };
