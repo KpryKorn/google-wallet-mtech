@@ -2,7 +2,7 @@ import FormulaireAdherent from "../FormulaireAdherent/FormulaireAdherent";
 import logoMGEN from "/logo-mgen.png";
 import passAdherent from "/pass-adherent-mgen.png";
 
-function MobileView() {
+function AppleView() {
   return (
     <>
       <div className="logo">
@@ -26,4 +26,4 @@ function MobileView() {
   );
 }
 
-export default MobileView;
+export default AppleView;

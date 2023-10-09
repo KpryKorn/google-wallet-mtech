@@ -1,8 +1,16 @@
-// au chargement de la fenêtre, check si userAgent est un mobile
+/**
+ * Check si l'utilisateur se connecte via PC ou Mobile
+ * @returns {boolean} true si userAgent est un mobile
+ */
 export const isUserAgentMobile = () => {
-  const UA = navigator.userAgent;
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    UA
-  );
-  // renvoie "true" ou "false"
+  return navigator.userAgentData.mobile;
+};
+
+/**
+ * Check si l'utilisateur est sur un iPhone ou un Android
+ * @returns {boolean} true si userAgent est un mobile Apple
+ */
+export const isUserAgentIOS = () => {
+  const platformOS = navigator.userAgentData.platform;
+  return /iPhone|iPad|iPod/i.test(platformOS);
 };
