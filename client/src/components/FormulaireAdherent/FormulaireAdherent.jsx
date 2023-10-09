@@ -1,5 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import styles from "./FormulaireAdherent.module.css";
 
 function FormulaireAdherent() {
   const signupSchema = Yup.object().shape({
@@ -17,23 +18,23 @@ function FormulaireAdherent() {
   });
 
   return (
-    <div className="formContainer">
+    <div className={styles.formContainer}>
       <h3>Mes informations</h3>
       <Formik
         initialValues={{
-          nom: "",
-          prenom: "",
+          nom: "MCFLY",
+          prenom: "Marty",
           numSecuSociale: "",
         }}
         validationSchema={signupSchema}
       >
         <Form>
           <label htmlFor="nom">Nom</label>
-          <Field id="nom" name="nom" placeholder="(Ex.) DUPONT.." />
+          <Field id="nom" name="nom" />
           <ErrorMessage component="span" name="nom" />
 
           <label htmlFor="prenom">Prénom</label>
-          <Field id="prenom" name="prenom" placeholder="(Ex.) Jean.." />
+          <Field id="prenom" name="prenom" />
           <ErrorMessage component="span" name="prenom" />
 
           <label htmlFor="numSecuSociale">Numéro de sécurité sociale</label>

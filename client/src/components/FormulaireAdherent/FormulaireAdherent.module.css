@@ -1,0 +1,35 @@
+/* FORMULAIRE ADHÉRENT */
+
+.formContainer,
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.formContainer {
+  margin-block: 2em;
+}
+.formContainer span {
+  color: red;
+}
+
+input {
+  cursor: auto;
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  transition: border-color 0.25s;
+}
+
+label {
+  font-weight: 500;
+}
