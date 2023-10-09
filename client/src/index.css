@@ -118,6 +118,17 @@ button:focus-visible {
   gap: 2em;
 }
 
+.device-check {
+  font-size: 12px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid black;
+}
+
 @media (min-width: 40em) {
   .split {
     flex-direction: row;
