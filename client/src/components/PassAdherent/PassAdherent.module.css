@@ -4,4 +4,108 @@
   margin: 0 auto;
   max-width: 411px;
   width: 100%;
+  color: white;
+}
+.pass {
+  background-color: rgba(106, 165, 23);
+  border-radius: 32px;
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  width: 100%;
+  overflow: hidden;
+  gap: 1rem;
+}
+.trait {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  height: 16px;
+}
+.heading {
+  position: relative;
+  text-align: left;
+}
+.headingFlex {
+  display: flex;
+  align-items: center;
+}
+.headingImg {
+  height: 32px;
+  margin-right: 16px;
+}
+.headingImg img {
+  height: 100%;
+  width: auto;
+  border-radius: 50%;
+  background: white;
+}
+.headingUser {
+  flex: auto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  word-break: break-word;
+}
+.headingTitle {
+  font-size: 32px;
+  line-height: 40px;
+  word-break: break-word;
+  font-weight: 400;
+  margin-top: 8px;
+}
+.centerText {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  word-break: break-word;
+  letter-spacing: 0;
+}
+.centerTextCol {
+  display: inline-flex;
+  flex-direction: column;
+  min-width: 85px;
+  overflow: hidden;
+  flex: auto;
+  align-items: flex-start;
+}
+.centerTextCol > div:first-child,
+.centerTextColRight > div:first-child {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.centerTextColRight {
+  display: inline-flex;
+  flex-direction: column;
+  min-width: 85px;
+  overflow: hidden;
+  flex: auto;
+  align-items: flex-end;
+}
+.flex3 {
+  display: flex;
+  justify-content: space-between;
+}
+.qrContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: calc(100% - 32px);
+  height: 220px;
+  width: 220px;
+}
+.qrCode {
+  border-radius: 16px;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.12),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  display: inline-flex;
+  background-image: url("../../../public/qrcode_localhost.png");
+  height: 200px;
+  width: 200px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
