@@ -4,3 +4,5 @@ node_modules/
 # variables d'env + secrets api
 .env
 feisty-nectar-399507-6311475972cc.json
+
+.gitkeep
