@@ -10,7 +10,7 @@ function FormulaireAdherent(props) {
     onAdherentDataChange({ ...adherentData, [name]: value });
   }
 
-  const signupSchema = Yup.object().shape({
+  const formSchema = Yup.object().shape({
     nom: Yup.string()
       .min(2, "Trop court !")
       .max(50, "Trop long !")
@@ -27,7 +27,7 @@ function FormulaireAdherent(props) {
   return (
     <div className={styles.formContainer}>
       <h3>Mes informations</h3>
-      <Formik initialValues={adherentData} validationSchema={signupSchema}>
+      <Formik initialValues={adherentData} validationSchema={formSchema}>
         <Form>
           <label htmlFor="nom">Nom</label>
           <Field
