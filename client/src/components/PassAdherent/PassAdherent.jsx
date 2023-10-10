@@ -1,7 +1,7 @@
 import styles from "./PassAdherent.module.css";
 import LogoMGEN from "/logo-mgen.png";
 
-function PassAdherent() {
+function PassAdherent(props) {
   return (
     <>
       <div className={styles.passContainer}>
@@ -12,7 +12,7 @@ function PassAdherent() {
                 <img src={LogoMGEN} alt="Logo de la MGEN" />
               </div>
               <div className={styles.headingUser}>
-                [TESTS UNIQUEMENT] MCFLY Marty
+                {props.adherentData.nom} {props.adherentData?.prenom}
               </div>
             </div>
             <div style={{ marginTop: "24px" }}>
@@ -23,11 +23,13 @@ function PassAdherent() {
           <div className={styles.centerText}>
             <div className={styles.centerTextCol}>
               <div>N° sécurité sociale</div>
-              <div>2 73 12 22 000 000 55</div>
+              <div>{props.adherentData?.numSecuSociale}</div>
             </div>
             <div className={styles.centerTextColRight}>
               <div>Période de validité</div>
-              <div> Du 01/01/2021 au 31/12/2021</div>
+              <div style={{ textAlign: "right" }}>
+                Du 01/01/2021 au 31/12/2021
+              </div>
             </div>
           </div>
           <div className={styles.trait}></div>

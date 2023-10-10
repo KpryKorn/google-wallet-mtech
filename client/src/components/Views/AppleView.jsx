@@ -1,8 +1,20 @@
 import FormulaireAdherent from "../FormulaireAdherent/FormulaireAdherent";
+import PassAdherent from "../PassAdherent/PassAdherent";
 import logoMGEN from "/logo-mgen.png";
 import passAdherent from "/pass-adherent-mgen.png";
+import { useState } from "react";
 
 function AppleView() {
+  const [adherentData, setAdherentData] = useState({
+    nom: "MCLFY",
+    prenom: "Marty",
+    numSecuSociale: "1 99 12 34 567 890 12",
+  });
+
+  function handleAdherentDataChange(data) {
+    setAdherentData(data);
+  }
+
   return (
     <>
       <div className="logo">
@@ -22,7 +34,11 @@ function AppleView() {
           <img src={passAdherent} alt="Screenshot du pass adhérent MGEN" />
         </div>
       </main>
-      <FormulaireAdherent />
+      <FormulaireAdherent
+        adherentData={adherentData}
+        onAdherentDataChange={handleAdherentDataChange}
+      />
+      <PassAdherent adherentData={adherentData} />
     </>
   );
 }

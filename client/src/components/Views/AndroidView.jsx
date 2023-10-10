@@ -1,8 +1,19 @@
 import FormulaireAdherent from "../FormulaireAdherent/FormulaireAdherent";
 import logoMGEN from "/logo-mgen.png";
 import passAdherent from "/pass-adherent-mgen.png";
+import PassAdherent from "../PassAdherent/PassAdherent";
+import { useState } from "react";
 
 function AndroidView() {
+  const [adherentData, setAdherentData] = useState({
+    nom: "MCLFY",
+    prenom: "Marty",
+    numSecuSociale: "1 99 12 34 567 890 12",
+  });
+
+  function handleAdherentDataChange(data) {
+    setAdherentData(data);
+  }
   return (
     <>
       <div className="logo">
@@ -22,7 +33,11 @@ function AndroidView() {
           <img src={passAdherent} alt="Screenshot du pass adhérent MGEN" />
         </div>
       </main>
-      <FormulaireAdherent />
+      <FormulaireAdherent
+        adherentData={adherentData}
+        onAdherentDataChange={handleAdherentDataChange}
+      />
+      <PassAdherent adherentData={adherentData} />
     </>
   );
 }

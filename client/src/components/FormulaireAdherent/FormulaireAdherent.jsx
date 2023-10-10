@@ -2,7 +2,14 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import styles from "./FormulaireAdherent.module.css";
 
-function FormulaireAdherent() {
+function FormulaireAdherent(props) {
+  const { adherentData, onAdherentDataChange } = props;
+
+  function handleInputChange(e) {
+    const { name, value } = e.target;
+    onAdherentDataChange({ ...adherentData, [name]: value });
+  }
+
   const signupSchema = Yup.object().shape({
     nom: Yup.string()
       .min(2, "Trop court !")
@@ -20,28 +27,30 @@ function FormulaireAdherent() {
   return (
     <div className={styles.formContainer}>
       <h3>Mes informations</h3>
-      <Formik
-        initialValues={{
-          nom: "MCFLY",
-          prenom: "Marty",
-          numSecuSociale: "",
-        }}
-        validationSchema={signupSchema}
-      >
+      <Formik initialValues={adherentData} validationSchema={signupSchema}>
         <Form>
           <label htmlFor="nom">Nom</label>
-          <Field id="nom" name="nom" />
+          <Field
+            id="nom"
+            name="nom"
+            value={adherentData.nom}
+            onChange={handleInputChange}
+          />
           <ErrorMessage component="span" name="nom" />
 
           <label htmlFor="prenom">Prénom</label>
-          <Field id="prenom" name="prenom" />
+          <Field
+            id="prenom"
+            name="prenom"
+            value={adherentData.prenom}
+            onChange={handleInputChange}
+          />
           <ErrorMessage component="span" name="prenom" />
 
           <label htmlFor="numSecuSociale">Numéro de sécurité sociale</label>
           <Field
             id="numSecuSociale"
             name="numSecuSociale"
-            maxLength="15"
             type="number"
             placeholder="(Ex.) 1 99 12 34 567 890 12"
             onInput={(e) => {
@@ -49,6 +58,8 @@ function FormulaireAdherent() {
                 e.target.value = e.target.value.slice(0, 15);
               }
             }}
+            value={adherentData.numSecuSociale}
+            onChange={handleInputChange}
           />
           <ErrorMessage component="span" name="numSecuSociale" />
 

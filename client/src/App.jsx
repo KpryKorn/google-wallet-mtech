@@ -2,6 +2,7 @@ import DesktopView from "./components/Views/DesktopView";
 import AppleView from "./components/Views/AppleView";
 import AndroidView from "./components/Views/AndroidView";
 import { isUserAgentMobile, isUserAgentIOS } from "./lib/utils";
+import PassAdherent from "./components/PassAdherent/PassAdherent";
 
 function App() {
   const isMobile = isUserAgentMobile();
