@@ -10,5 +10,8 @@
     "express": "^4.17.1",
     "google-auth-library": ">=5.9.2",
     "jsonwebtoken": ">=8.5.1"
+  },
+  "devDependencies": {
+    "cors": "^2.8.5"
   }
 }

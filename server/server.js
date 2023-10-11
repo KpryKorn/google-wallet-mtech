@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 const apiRoutes = require("./routes/api");
+const cors = require("cors");
+
+app.use(cors());
 
 // monte les routes API sous le préfixe /api
 app.use("/api", apiRoutes);

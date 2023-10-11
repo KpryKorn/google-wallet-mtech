@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 
-// renvoie les données spécifiques à iOS sous "/api/apple"
+// gère les requêtes GET spécifiques à iOS sous "/api/apple"
 router.get("/apple", (req, res, next) => {
   try {
     const filePath = path.join(
@@ -15,7 +15,7 @@ router.get("/apple", (req, res, next) => {
   }
 });
 
-// renvoie les données spécifiques à android sous "/api/android"
+// gère les requêtes GET spécifiques à android sous "/api/android"
 router.get("/android", (req, res, next) => {
   try {
     res.send("Android");
