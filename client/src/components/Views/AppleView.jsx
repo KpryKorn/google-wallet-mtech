@@ -1,17 +1,26 @@
 import FormulaireAdherent from "../FormulaireAdherent/FormulaireAdherent";
 import PassAdherent from "../PassAdherent/PassAdherent";
 import logoMGEN from "/logo-mgen.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function AppleView() {
-  const [adherentData, setAdherentData] = useState({
-    nom: "MCLFY",
-    prenom: "Marty",
-    numSecuSociale: "199123456789012",
-  });
+  // TODO : remplacer par appleData où chaque view fetch ses propres données
+  const [appleData, setAppleData] = useState({});
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch("http://localhost:3000/api/apple");
+        const data = await res.json();
+        setAppleData(data);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    fetchData();
+  }, []);
 
-  function handleAdherentDataChange(data) {
-    setAdherentData(data);
+  function handleAppleDataChange(data) {
+    setAppleData(data);
   }
 
   return (
@@ -30,12 +39,12 @@ function AppleView() {
           </p>
         </div>
         <div className="hero__img">
-          <PassAdherent adherentData={adherentData} />
+          <PassAdherent appleData={appleData} />
         </div>
       </main>
       <FormulaireAdherent
-        adherentData={adherentData}
-        onAdherentDataChange={handleAdherentDataChange}
+        appleData={appleData}
+        onAppleDataChange={handleAppleDataChange}
       />
     </>
   );

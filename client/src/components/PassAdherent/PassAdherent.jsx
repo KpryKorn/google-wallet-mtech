@@ -1,6 +1,9 @@
 import styles from "./PassAdherent.module.css";
 import LogoMGEN from "/logo-mgen.png";
 
+// done : add appleData
+// TODO : add androidData
+
 function PassAdherent(props) {
   return (
     <>
@@ -12,7 +15,7 @@ function PassAdherent(props) {
                 <img src={LogoMGEN} alt="Logo de la MGEN" />
               </div>
               <div className={styles.headingUser}>
-                {props.adherentData.nom} {props.adherentData?.prenom}
+                {props.appleData?.generic?.headerFields[0].value}
               </div>
             </div>
             <div style={{ marginTop: "24px" }}>
@@ -23,7 +26,7 @@ function PassAdherent(props) {
           <div className={styles.centerText}>
             <div className={styles.centerTextCol}>
               <div>N° sécurité sociale</div>
-              <div>{props.adherentData?.numSecuSociale}</div>
+              <div>{props.appleData?.numSecuSociale}</div>
             </div>
             <div className={styles.centerTextColRight}>
               <div>Période de validité</div>

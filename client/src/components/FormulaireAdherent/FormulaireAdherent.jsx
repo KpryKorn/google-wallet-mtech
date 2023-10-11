@@ -3,21 +3,18 @@ import * as Yup from "yup";
 import styles from "./FormulaireAdherent.module.css";
 
 function FormulaireAdherent(props) {
-  const { adherentData, onAdherentDataChange } = props;
+  const { appleData, onAppleDataChange } = props;
 
   function handleInputChange(e) {
     const { name, value } = e.target;
-    onAdherentDataChange({ ...adherentData, [name]: value });
+    onAppleDataChange({ ...appleData, [name]: value });
+    // todo : fix pour correspondre aux données renvoyées par l'api
   }
 
   const formSchema = Yup.object().shape({
-    nom: Yup.string()
+    nomPrenom: Yup.string()
       .min(2, "Trop court !")
-      .max(50, "Trop long !")
-      .required("Champ requis"),
-    prenom: Yup.string()
-      .min(2, "Trop court !")
-      .max(50, "Trop long !")
+      .max(80, "Trop long !")
       .required("Champ requis"),
     numSecuSociale: Yup.string()
       .min(15, "Doit faire 15 caractères")
@@ -27,25 +24,16 @@ function FormulaireAdherent(props) {
   return (
     <div className={styles.formContainer}>
       <h3>Mes informations</h3>
-      <Formik initialValues={adherentData} validationSchema={formSchema}>
+      <Formik initialValues={appleData} validationSchema={formSchema}>
         <Form>
-          <label htmlFor="nom">Nom</label>
+          <label htmlFor="nomPrenom">Nom + Prénom</label>
           <Field
-            id="nom"
-            name="nom"
-            value={adherentData.nom}
+            id="nomPrenom"
+            name="nomPrenom"
+            value={appleData.nom} // TODO : fix initialValues pour correspondre aux vraies données
             onChange={handleInputChange}
           />
-          <ErrorMessage component="span" name="nom" />
-
-          <label htmlFor="prenom">Prénom</label>
-          <Field
-            id="prenom"
-            name="prenom"
-            value={adherentData.prenom}
-            onChange={handleInputChange}
-          />
-          <ErrorMessage component="span" name="prenom" />
+          <ErrorMessage component="span" name="nomPrenom" />
 
           <label htmlFor="numSecuSociale">Numéro de sécurité sociale</label>
           <Field
@@ -58,7 +46,7 @@ function FormulaireAdherent(props) {
                 e.target.value = e.target.value.slice(0, 15);
               }
             }}
-            value={adherentData.numSecuSociale}
+            value={appleData.numSecuSociale}
             onChange={handleInputChange}
           />
           <ErrorMessage component="span" name="numSecuSociale" />
