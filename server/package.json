@@ -1,6 +1,9 @@
 {
   "name": "server",
   "private": true,
+  "scripts": {
+    "start": "node --watch server.js"
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "dotenv": "^16.3.1",
