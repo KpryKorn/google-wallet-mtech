@@ -4,7 +4,6 @@ import PassAdherent from "../PassAdherent/PassAdherent";
 import { useState } from "react";
 
 function AndroidView() {
-  // TODO : remplacer par androidData où chaque view fetch ses propres données
   const [adherentData, setAdherentData] = useState({
     nom: "MCLFY",
     prenom: "Marty",
