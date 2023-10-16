@@ -5,9 +5,20 @@ import styles from "./FormulaireApple.module.css";
 function FormulaireApple(props) {
   const { appleData, onAppleDataChange } = props;
 
-  function handleInputChange(e) {
-    const { name, value } = e.target;
-    onAppleDataChange({ ...appleData, [name]: value });
+  function handleSecuInputChange(e) {
+    const { value } = e.target;
+    const updatedSecuData = { ...appleData };
+
+    updatedSecuData.generic.secondaryFields[0].value = value;
+    onAppleDataChange(updatedSecuData);
+  }
+
+  function handleNameInputChange(e) {
+    const { value } = e.target;
+    const updatedNameData = { ...appleData };
+
+    updatedNameData.generic.headerFields[0].value = value;
+    onAppleDataChange(updatedNameData);
   }
 
   const formSchema = Yup.object().shape({
@@ -33,33 +44,23 @@ function FormulaireApple(props) {
           <Field
             id="nom"
             name="nom"
-            value={appleData.nom}
-            onChange={handleInputChange}
+            value={appleData?.generic?.headerFields[0].value || ""}
+            onChange={handleNameInputChange}
           />
           <ErrorMessage component="span" name="nom" />
-
-          <label htmlFor="prenom">Prénom</label>
-          <Field
-            id="prenom"
-            name="prenom"
-            value={appleData.prenom}
-            onChange={handleInputChange}
-          />
-          <ErrorMessage component="span" name="prenom" />
 
           <label htmlFor="numSecuSociale">Numéro de sécurité sociale</label>
           <Field
             id="numSecuSociale"
             name="numSecuSociale"
-            type="number"
             placeholder="(Ex.) 1 99 12 34 567 890 12"
             onInput={(e) => {
               if (e.target.value.length > 15) {
                 e.target.value = e.target.value.slice(0, 15);
               }
             }}
-            value={appleData.numSecuSociale}
-            onChange={handleInputChange}
+            value={appleData?.generic?.secondaryFields[0].value || ""}
+            onChange={handleSecuInputChange}
           />
           <ErrorMessage component="span" name="numSecuSociale" />
 
