@@ -1,7 +1,7 @@
-import styles from "./PassAdherent.module.css";
+import styles from "./PassApple.module.css";
 import LogoMGEN from "/logo-mgen.png";
 
-function PassAdherent(props) {
+function PassApple(props) {
   return (
     <>
       <div className={styles.passContainer}>
@@ -70,4 +70,4 @@ function PassAdherent(props) {
   );
 }
 
-export default PassAdherent;
+export default PassApple;

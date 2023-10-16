@@ -1,4 +1,4 @@
-import FormulaireAdherent from "../FormulaireAdherent/FormulaireAdherent";
+import FormulaireAdherent from "../FormulaireAdherent/FormulaireApple";
 import logoMGEN from "/logo-mgen.png";
 import PassAdherent from "../PassAdherent/PassAdherent";
 import { useState } from "react";

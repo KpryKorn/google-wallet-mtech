@@ -1,5 +1,5 @@
-import FormulaireAdherent from "../FormulaireAdherent/FormulaireAdherent";
-import PassAdherent from "../PassAdherent/PassAdherent";
+import FormulaireApple from "../FormulaireAdherent/FormulaireApple";
+import PassApple from "../PassAdherent/PassApple";
 import logoMGEN from "/logo-mgen.png";
 import { useState } from "react";
 
@@ -30,10 +30,10 @@ function AppleView() {
           </p>
         </div>
         <div className="hero__img">
-          <PassAdherent adherentData={adherentData} />
+          <PassApple adherentData={adherentData} />
         </div>
       </main>
-      <FormulaireAdherent
+      <FormulaireApple
         adherentData={adherentData}
         onAdherentDataChange={handleAdherentDataChange}
       />

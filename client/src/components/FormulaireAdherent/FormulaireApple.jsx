@@ -1,8 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import styles from "./FormulaireAdherent.module.css";
+import styles from "./FormulaireApple.module.css";
 
-function FormulaireAdherent(props) {
+function FormulaireApple(props) {
   const { adherentData, onAdherentDataChange } = props;
 
   function handleInputChange(e) {
@@ -70,4 +70,4 @@ function FormulaireAdherent(props) {
   );
 }
 
-export default FormulaireAdherent;
+export default FormulaireApple;
