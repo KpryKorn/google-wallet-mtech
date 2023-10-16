@@ -12,7 +12,7 @@ function PassApple(props) {
                 <img src={LogoMGEN} alt="Logo de la MGEN" />
               </div>
               <div className={styles.headingUser}>
-                {props.adherentData.nom} {props.adherentData?.prenom}
+                {props.appleData.nom} {props.appleData?.prenom}
               </div>
             </div>
             <div style={{ marginTop: "24px" }}>
@@ -23,7 +23,7 @@ function PassApple(props) {
           <div className={styles.centerText}>
             <div className={styles.centerTextCol}>
               <div>N° sécurité sociale</div>
-              <div>{props.adherentData?.numSecuSociale}</div>
+              <div>{props.appleData?.numSecuSociale}</div>
             </div>
             <div className={styles.centerTextColRight}>
               <div>Période de validité</div>

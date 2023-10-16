@@ -3,11 +3,11 @@ import * as Yup from "yup";
 import styles from "./FormulaireApple.module.css";
 
 function FormulaireApple(props) {
-  const { adherentData, onAdherentDataChange } = props;
+  const { appleData, onAppleDataChange } = props;
 
   function handleInputChange(e) {
     const { name, value } = e.target;
-    onAdherentDataChange({ ...adherentData, [name]: value });
+    onAppleDataChange({ ...appleData, [name]: value });
   }
 
   const formSchema = Yup.object().shape({
@@ -27,13 +27,13 @@ function FormulaireApple(props) {
   return (
     <div className={styles.formContainer}>
       <h3>Mes informations</h3>
-      <Formik initialValues={adherentData} validationSchema={formSchema}>
+      <Formik initialValues={appleData} validationSchema={formSchema}>
         <Form>
           <label htmlFor="nom">Nom</label>
           <Field
             id="nom"
             name="nom"
-            value={adherentData.nom}
+            value={appleData.nom}
             onChange={handleInputChange}
           />
           <ErrorMessage component="span" name="nom" />
@@ -42,7 +42,7 @@ function FormulaireApple(props) {
           <Field
             id="prenom"
             name="prenom"
-            value={adherentData.prenom}
+            value={appleData.prenom}
             onChange={handleInputChange}
           />
           <ErrorMessage component="span" name="prenom" />
@@ -58,7 +58,7 @@ function FormulaireApple(props) {
                 e.target.value = e.target.value.slice(0, 15);
               }
             }}
-            value={adherentData.numSecuSociale}
+            value={appleData.numSecuSociale}
             onChange={handleInputChange}
           />
           <ErrorMessage component="span" name="numSecuSociale" />

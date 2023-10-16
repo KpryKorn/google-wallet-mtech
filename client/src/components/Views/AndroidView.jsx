@@ -1,6 +1,6 @@
-import FormulaireAdherent from "../FormulaireAdherent/FormulaireApple";
+import FormulaireApple from "../FormulaireAdherent/FormulaireApple";
 import logoMGEN from "/logo-mgen.png";
-import PassAdherent from "../PassAdherent/PassAdherent";
+import PassApple from "../PassAdherent/PassApple";
 import { useState } from "react";
 
 function AndroidView() {
@@ -29,10 +29,10 @@ function AndroidView() {
           </p>
         </div>
         <div className="hero__img">
-          <PassAdherent adherentData={adherentData} />
+          <PassApple adherentData={adherentData} />
         </div>
       </main>
-      <FormulaireAdherent
+      <FormulaireApple
         adherentData={adherentData}
         onAdherentDataChange={handleAdherentDataChange}
       />
