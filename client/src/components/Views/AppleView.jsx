@@ -6,18 +6,17 @@ import { useState, useEffect } from "react";
 function AppleView() {
   const [appleData, setAppleData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/api/apple")
-      .then((res) => {
-        res.json();
-      })
-      .then((data) => {
+    async function fetchData() {
+      try {
+        const res = await fetch("http://localhost:3000/api/apple");
+        const data = await res.json();
         setAppleData(data);
-      })
-      .catch((err) => {
+      } catch (err) {
         console.error(err);
-      });
+      }
+    }
+    fetchData();
   }, []);
-
   function handleAppleDataChange(data) {
     setAppleData(data);
   }
