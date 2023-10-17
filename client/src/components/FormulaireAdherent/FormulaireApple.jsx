@@ -1,7 +1,9 @@
 import styles from "./FormulaireApple.module.css";
+import Toast from "../UI/Toast";
+import { useState } from "react";
 
-function FormulaireApple(props) {
-  const { appleData, onAppleDataChange } = props;
+function FormulaireApple({ appleData, onAppleDataChange }) {
+  const [showToast, setShowToast] = useState(false);
 
   function handleSecuInputChange(e) {
     const { value } = e.target;
@@ -36,6 +38,8 @@ function FormulaireApple(props) {
         return response.json();
       })
       .then((data) => {
+        setShowToast(true);
+
         console.log(data); // réponse du serveur (msg de confirmation)
       })
       .catch((error) => {
@@ -74,6 +78,10 @@ function FormulaireApple(props) {
           <a href="http://localhost:3000/api/apple/download">Télécharger</a>
         </div>
       </form>
+      <Toast
+        message={"Vos données ont correctement été sauvegardées."}
+        showToast={showToast}
+      />
     </div>
   );
 }

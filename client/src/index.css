@@ -128,6 +128,26 @@ button:focus-visible {
   border: 1px solid black;
 }
 
+.toast {
+  position: fixed;
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  border: 2px solid white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+  top: 15px;
+  right: -100%; /* Démarrez le toast en dehors de l'écran à droite */
+  background-color: #6aa517;
+  color: #fff;
+  padding: 15px;
+  transition: right 0.5s;
+}
+.toast.show {
+  right: 15px; /* Faites apparaître le toast en le déplaçant vers la gauche */
+}
+
 @media (min-width: 40em) {
   .split {
     flex-direction: row;
