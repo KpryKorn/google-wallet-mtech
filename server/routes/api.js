@@ -21,9 +21,9 @@ router.get("/apple", (req, res, next) => {
 
 router.put("/apple", (req, res, next) => {
   try {
-    const updatedAppleData = req.body;
+    const updatedAppleData = req.body; // Corps de la requête
 
-    console.log(`Serveur: - Req Body: ${JSON.stringify(updatedAppleData)}`);
+    // faire qqch avec le corps de la requête ?
 
     res.json({ message: "Données mises à jour avec succès" });
   } catch (err) {
