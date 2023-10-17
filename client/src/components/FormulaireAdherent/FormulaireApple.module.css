@@ -33,3 +33,27 @@ input {
 label {
   font-weight: 500;
 }
+
+.formBtns {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.formBtns a {
+  height: 39px;
+  line-height: 1;
+  border-radius: 8px;
+  border: 1px solid #6aa517;
+  color: #6aa517;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.formBtns a:hover {
+  color: #6aa517;
+}
