@@ -1,8 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const path = require("path");
+const bodyParser = require("body-parser");
 
-// gère les requêtes GET spécifiques à iOS sous "/api/apple"
+// middleware pour gérer les corps de requêtes PUT et POST
+router.use(bodyParser.json());
+
+// gère les requêtes spécifiques à iOS sous "/api/apple"
 router.get("/apple", (req, res, next) => {
   try {
     const filePath = path.join(
@@ -15,7 +19,19 @@ router.get("/apple", (req, res, next) => {
   }
 });
 
-// gère les requêtes GET spécifiques à android sous "/api/android"
+router.put("/apple", (req, res, next) => {
+  try {
+    const updatedAppleData = req.body;
+
+    console.log(`Serveur: - Req Body: ${JSON.stringify(updatedAppleData)}`);
+
+    res.json({ message: "Données mises à jour avec succès" });
+  } catch (err) {
+    next(err);
+  }
+});
+
+// gère les requêtes spécifiques à android sous "/api/android"
 router.get("/android", (req, res, next) => {
   try {
     res.send("Android");

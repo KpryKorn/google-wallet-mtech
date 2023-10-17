@@ -21,12 +21,30 @@ function FormulaireApple(props) {
     onAppleDataChange(updatedNameData);
   }
 
+  // TODO : FIX "VALUES" FORMIK
+
+  function handleSubmit(values) {
+    console.log({ values });
+    fetch("http://localhost:3000/api/apple", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(`Client: ${JSON.stringify(data)}`);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
   const formSchema = Yup.object().shape({
     nom: Yup.string()
-      .min(2, "Trop court !")
-      .max(50, "Trop long !")
-      .required("Champ requis"),
-    prenom: Yup.string()
       .min(2, "Trop court !")
       .max(50, "Trop long !")
       .required("Champ requis"),
@@ -38,7 +56,11 @@ function FormulaireApple(props) {
   return (
     <div className={styles.formContainer}>
       <h3>Mes informations</h3>
-      <Formik initialValues={appleData} validationSchema={formSchema}>
+      <Formik
+        initialValues={appleData}
+        validationSchema={formSchema}
+        onSubmit={handleSubmit}
+      >
         <Form>
           <label htmlFor="nom">Nom</label>
           <Field
