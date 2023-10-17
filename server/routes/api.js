@@ -4,10 +4,13 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 
-const customPUTPath = path.join(
+const customWritePath = path.join(
   __dirname,
-  "../iOS/CarteAdherent.pass/test.json"
+  "../iOS/CarteAdherent.pass/pass.json"
 );
+
+// TODO : remplacer par vrai fichier .pkpass
+const customDownloadPath = path.join(__dirname, "../iOS/CarteAdherent.pkpass");
 
 // middleware pour gérer les corps de requêtes PUT et POST
 router.use(bodyParser.json());
@@ -30,7 +33,7 @@ router.put("/apple", (req, res, next) => {
     const updatedAppleData = req.body; // Corps de la requête
 
     // enregistre les données dans un fichier JSON
-    fs.writeFile(customPUTPath, JSON.stringify(updatedAppleData), (err) => {
+    fs.writeFile(customWritePath, JSON.stringify(updatedAppleData), (err) => {
       if (err) {
         console.error("Erreur lors de l'enregistrement du fichier JSON :", err);
         return res
@@ -45,9 +48,9 @@ router.put("/apple", (req, res, next) => {
   }
 });
 
-// télécharge le fichier json
+// télécharge le fichier .pkpass
 router.get("/apple/download", (req, res, next) => {
-  res.download(customPUTPath);
+  res.download(customDownloadPath);
 });
 
 // gère les requêtes spécifiques à android sous "/api/android"
