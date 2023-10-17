@@ -2,6 +2,12 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 const bodyParser = require("body-parser");
+const fs = require("fs");
+
+const customPUTPath = path.join(
+  __dirname,
+  "../iOS/CarteAdherent.pass/test.json"
+);
 
 // middleware pour gérer les corps de requêtes PUT et POST
 router.use(bodyParser.json());
@@ -23,12 +29,25 @@ router.put("/apple", (req, res, next) => {
   try {
     const updatedAppleData = req.body; // Corps de la requête
 
-    // faire qqch avec le corps de la requête ?
-
-    res.json({ message: "Données mises à jour avec succès" });
+    // enregistre les données dans un fichier JSON
+    fs.writeFile(customPUTPath, JSON.stringify(updatedAppleData), (err) => {
+      if (err) {
+        console.error("Erreur lors de l'enregistrement du fichier JSON :", err);
+        return res
+          .status(500)
+          .json({ error: "Erreur lors de l'enregistrement du fichier JSON" });
+      }
+      console.log("Fichier JSON enregistré avec succès.");
+      res.json({ message: "Données mises à jour avec succès" });
+    });
   } catch (err) {
     next(err);
   }
+});
+
+// télécharge le fichier json
+router.get("/apple/download", (req, res, next) => {
+  res.download(customPUTPath);
 });
 
 // gère les requêtes spécifiques à android sous "/api/android"
