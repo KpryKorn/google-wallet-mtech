@@ -3,6 +3,7 @@ const router = express.Router();
 const path = require("path");
 const bodyParser = require("body-parser");
 const fs = require("fs");
+const archiver = require("archiver");
 
 const customWritePath = path.join(
   __dirname,
@@ -10,7 +11,7 @@ const customWritePath = path.join(
 );
 
 // TODO : remplacer par vrai fichier .pkpass
-const customDownloadPath = path.join(__dirname, "../iOS/CarteAdherent.pkpass");
+const customDownloadPath = path.join(__dirname, "../CarteAdherent.pkpass");
 
 // middleware pour gérer les corps de requêtes PUT et POST
 router.use(bodyParser.json());
@@ -46,6 +47,33 @@ router.put("/apple", (req, res, next) => {
   } catch (err) {
     next(err);
   }
+});
+
+// TODO : zip le fichier .pass
+const output = fs.createWriteStream("CarteAdherent.zip");
+const archive = archiver("zip", { zlib: { level: 9 } });
+
+// Écrit l'archive sur le disque
+output.on("close", () => {
+  console.log("Archive créée avec succès");
+});
+
+archive.on("error", (err) => {
+  throw err;
+});
+
+archive.pipe(output);
+
+// Ajoute le dossier à l'archive
+archive.directory(path.join(__dirname, "../iOS/CarteAdherent.pass"), false);
+
+// Finalise l'archive
+archive.finalize();
+
+// TODO : changer extension du fichier .zip en .pkpass
+fs.rename("CarteAdherent.zip", "CarteAdherent.pkpass", (err) => {
+  if (err) throw err;
+  console.log("Le fichier a été renommé avec succès");
 });
 
 // télécharge le fichier .pkpass
