@@ -3,13 +3,12 @@ const router = express.Router();
 const path = require("path");
 const bodyParser = require("body-parser");
 const fs = require("fs");
-const archiver = require("archiver");
+const zipper = require("../common/zipper");
 
 const customWritePath = path.join(
   __dirname,
   "../iOS/CarteAdherent.pass/pass.json"
 );
-
 // TODO : remplacer par vrai fichier .pkpass
 const customDownloadPath = path.join(__dirname, "../CarteAdherent.pkpass");
 
@@ -29,7 +28,8 @@ router.get("/apple", (req, res, next) => {
   }
 });
 
-router.put("/apple", (req, res, next) => {
+// lors d'une requête PUT => met à jour les données; crée l'archive; télécharge l'archive
+router.put("/apple", async (req, res, next) => {
   try {
     const updatedAppleData = req.body; // Corps de la requête
 
@@ -41,44 +41,24 @@ router.put("/apple", (req, res, next) => {
           .status(500)
           .json({ error: "Erreur lors de l'enregistrement du fichier JSON" });
       }
-      console.log("Fichier JSON enregistré avec succès.");
-      res.json({ message: "Données mises à jour avec succès" });
+      console.log("---> Fichier JSON enregistré avec succès.");
+
+      zipper
+        .zipAndRename()
+        .then(() => {
+          // télécharge le fichier .pkpass
+          res.download(customDownloadPath);
+        })
+        .catch((err) => {
+          console.error("Erreur lors de la création de l'archive :", err);
+          return res
+            .status(500)
+            .json({ error: "Erreur lors de la création de l'archive" });
+        });
     });
   } catch (err) {
     next(err);
   }
-});
-
-// TODO : zip le fichier .pass
-const output = fs.createWriteStream("CarteAdherent.zip");
-const archive = archiver("zip", { zlib: { level: 9 } });
-
-// Écrit l'archive sur le disque
-output.on("close", () => {
-  console.log("Archive créée avec succès");
-});
-
-archive.on("error", (err) => {
-  throw err;
-});
-
-archive.pipe(output);
-
-// Ajoute le dossier à l'archive
-archive.directory(path.join(__dirname, "../iOS/CarteAdherent.pass"), false);
-
-// Finalise l'archive
-archive.finalize();
-
-// TODO : changer extension du fichier .zip en .pkpass
-fs.rename("CarteAdherent.zip", "CarteAdherent.pkpass", (err) => {
-  if (err) throw err;
-  console.log("Le fichier a été renommé avec succès");
-});
-
-// télécharge le fichier .pkpass
-router.get("/apple/download", (req, res, next) => {
-  res.download(customDownloadPath);
 });
 
 // gère les requêtes spécifiques à android sous "/api/android"
