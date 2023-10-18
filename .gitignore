@@ -6,5 +6,6 @@ node_modules/
 feisty-nectar-399507-6311475972cc.json
 
 .gitkeep
+server/*.pass
 server/*.pkpass
 server/*.zip

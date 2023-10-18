@@ -29,7 +29,7 @@ async function zipAndRename() {
   // Après avoir créé l'archive, on la renomme en .pkpass
   await new Promise((resolve, reject) => {
     if (fs.existsSync(path.join(__dirname, "../CarteAdherent.zip"))) {
-      fs.rename("CarteAdherent.zip", "CarteAdherent.pkpass", (err) => {
+      fs.rename("CarteAdherent.zip", "CarteAdherent.pass", (err) => {
         if (err) reject(err);
         console.log("Le fichier a été renommé avec succès");
         resolve();

@@ -10,7 +10,7 @@ const customWritePath = path.join(
   "../iOS/CarteAdherent.pass/pass.json"
 );
 // TODO : remplacer par vrai fichier .pkpass
-const customDownloadPath = path.join(__dirname, "../CarteAdherent.pkpass");
+const customDownloadPath = path.join(__dirname, "../CarteAdherent.pass");
 
 // middleware pour gérer les corps de requêtes PUT et POST
 router.use(bodyParser.json());
@@ -42,12 +42,20 @@ router.put("/apple", async (req, res, next) => {
           .json({ error: "Erreur lors de l'enregistrement du fichier JSON" });
       }
       console.log("---> Fichier JSON enregistré avec succès.");
-
       zipper
         .zipAndRename()
         .then(() => {
           // télécharge le fichier .pkpass
-          res.download(customDownloadPath);
+          res.download(customDownloadPath, (downloadErr) => {
+            if (downloadErr) {
+              console.error("Erreur lors du téléchargement :", downloadErr);
+              return res
+                .status(500)
+                .json({ error: "Erreur lors du téléchargement" });
+            } else {
+              console.log("---> Téléchargement du fichier .pkpass");
+            }
+          });
         })
         .catch((err) => {
           console.error("Erreur lors de la création de l'archive :", err);

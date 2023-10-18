@@ -35,12 +35,8 @@ function FormulaireApple({ appleData, onAppleDataChange }) {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-        return response.json();
-      })
-      .then((data) => {
+        console.log("Données enregistrées avec succès");
         setShowToast(true);
-
-        console.log(data); // réponse du serveur (msg de confirmation)
       })
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
@@ -75,7 +71,6 @@ function FormulaireApple({ appleData, onAppleDataChange }) {
 
         <div className={styles.formBtns}>
           <button type="submit">Sauvegarder</button>
-          <a href="http://localhost:3000/api/apple/download">Télécharger</a>
         </div>
       </form>
       <Toast
