@@ -6,5 +6,5 @@ node_modules/
 feisty-nectar-399507-6311475972cc.json
 
 .gitkeep
-server/CarteAdherent.pkpass
-server/CarteAdherent.zip
+server/*.pkpass
+server/*.zip
