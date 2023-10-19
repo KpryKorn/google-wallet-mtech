@@ -71,6 +71,7 @@ function FormulaireApple({ appleData, onAppleDataChange }) {
 
         <div className={styles.formBtns}>
           <button type="submit">Sauvegarder</button>
+          <a href="http://localhost:3000/api/apple/download">Télécharger</a>
         </div>
       </form>
       <Toast
