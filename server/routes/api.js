@@ -10,7 +10,7 @@ const customWritePath = path.join(
   "../iOS/CarteAdherent.pass/pass.json"
 );
 // TODO : remplacer par vrai fichier .pkpass
-const customDownloadPath = path.join(__dirname, "../CarteAdherent.pass");
+const customDownloadPath = path.join(__dirname, "../CarteAdherent.pkpass");
 
 // middleware pour gérer les corps de requêtes PUT et POST
 router.use(bodyParser.json());
@@ -28,11 +28,10 @@ router.get("/apple", (req, res, next) => {
   }
 });
 
-// lors d'une requête PUT => met à jour les données; crée l'archive; télécharge l'archive
+// lors d'une requête PUT => met à jour les données; crée l'archive
 router.put("/apple", async (req, res, next) => {
   try {
     const updatedAppleData = req.body; // Corps de la requête
-
     // enregistre les données dans un fichier JSON
     fs.writeFile(customWritePath, JSON.stringify(updatedAppleData), (err) => {
       if (err) {
@@ -45,17 +44,7 @@ router.put("/apple", async (req, res, next) => {
       zipper
         .zipAndRename()
         .then(() => {
-          // télécharge le fichier .pkpass
-          res.download(customDownloadPath, (downloadErr) => {
-            if (downloadErr) {
-              console.error("Erreur lors du téléchargement :", downloadErr);
-              return res
-                .status(500)
-                .json({ error: "Erreur lors du téléchargement" });
-            } else {
-              console.log("---> Téléchargement du fichier .pkpass");
-            }
-          });
+          res.sendStatus(200);
         })
         .catch((err) => {
           console.error("Erreur lors de la création de l'archive :", err);
@@ -67,6 +56,18 @@ router.put("/apple", async (req, res, next) => {
   } catch (err) {
     next(err);
   }
+});
+
+// gère le téléchargement du .pkpass
+router.get("/apple/download", (req, res, next) => {
+  res.download(customDownloadPath, (err) => {
+    if (err) {
+      console.error("Erreur lors du téléchargement du fichier :", err);
+      return res
+        .status(500)
+        .json({ error: "Erreur lors du téléchargement du fichier" });
+    }
+  });
 });
 
 // gère les requêtes spécifiques à android sous "/api/android"
