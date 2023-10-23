@@ -1,18 +1,26 @@
-import FormulaireApple from "../FormulaireAdherent/FormulaireApple";
+import FormulaireAndroid from "../FormulaireAdherent/FormulaireAndroid";
+import PassAndroid from "../PassAdherent/PassAndroid";
 import logoMGEN from "/logo-mgen.png";
-import PassApple from "../PassAdherent/PassApple";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function AndroidView() {
-  const [adherentData, setAdherentData] = useState({
-    nom: "MCLFY",
-    prenom: "Marty",
-    numSecuSociale: "199223456789012",
-  });
-
-  function handleAdherentDataChange(data) {
-    setAdherentData(data);
+  const [appleData, setAppleData] = useState([]);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch("http://localhost:3000/api/apple");
+        const data = await res.json();
+        setAppleData(data);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    fetchData();
+  }, []);
+  function handleAppleDataChange(data) {
+    setAppleData(data);
   }
+
   return (
     <>
       <div className="logo">
@@ -29,12 +37,12 @@ function AndroidView() {
           </p>
         </div>
         <div className="hero__img">
-          <PassApple adherentData={adherentData} />
+          <PassAndroid appleData={appleData} />
         </div>
       </main>
-      <FormulaireApple
-        adherentData={adherentData}
-        onAdherentDataChange={handleAdherentDataChange}
+      <FormulaireAndroid
+        appleData={appleData}
+        onAppleDataChange={handleAppleDataChange}
       />
     </>
   );
