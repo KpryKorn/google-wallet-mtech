@@ -4,6 +4,7 @@ import logoMGEN from "/logo-mgen.png";
 import { useState, useEffect } from "react";
 
 function AndroidView() {
+  // TODO : fetch Android Data
   const [appleData, setAppleData] = useState([]);
   useEffect(() => {
     async function fetchData() {
@@ -17,6 +18,8 @@ function AndroidView() {
     }
     fetchData();
   }, []);
+
+  // TODO : handle Android Data Change
   function handleAppleDataChange(data) {
     setAppleData(data);
   }

@@ -9,7 +9,7 @@ const customWritePath = path.join(
   __dirname,
   "../iOS/CarteAdherent.pass/pass.json"
 );
-// TODO : remplacer par vrai fichier .pkpass
+
 const customDownloadPath = path.join(__dirname, "../CarteAdherent.pkpass");
 
 // middleware pour gérer les corps de requêtes PUT et POST

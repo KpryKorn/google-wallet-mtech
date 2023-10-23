@@ -2,6 +2,7 @@ import styles from "./FormulaireAdherent.module.css";
 import Toast from "../UI/Toast";
 import { useState } from "react";
 
+// TODO : fetch Android Data
 function FormulaireAndroid({ appleData, onAppleDataChange }) {
   const [showToast, setShowToast] = useState(false);
 
@@ -21,6 +22,7 @@ function FormulaireAndroid({ appleData, onAppleDataChange }) {
     onAppleDataChange(updatedNameData);
   }
 
+  // TODO : handle Android Data Change
   function handleSubmit(e) {
     e.preventDefault();
 
