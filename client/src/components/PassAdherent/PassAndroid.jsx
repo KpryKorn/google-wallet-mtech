@@ -1,7 +1,7 @@
 import styles from "./PassAdherent.module.css";
 import LogoMGEN from "/logo-mgen.png";
 
-function PassApple(props) {
+function PassAndroid(props) {
   return (
     <>
       <div className={styles.passContainer}>
@@ -70,4 +70,4 @@ function PassApple(props) {
   );
 }
 
-export default PassApple;
+export default PassAndroid;
