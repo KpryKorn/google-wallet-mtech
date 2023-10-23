@@ -2,7 +2,7 @@ import styles from "./FormulaireAdherent.module.css";
 import Toast from "../UI/Toast";
 import { useState } from "react";
 
-function FormulaireApple({ appleData, onAppleDataChange }) {
+function FormulaireAndroid({ appleData, onAppleDataChange }) {
   const [showToast, setShowToast] = useState(false);
 
   function handleSecuInputChange(e) {
@@ -82,4 +82,4 @@ function FormulaireApple({ appleData, onAppleDataChange }) {
   );
 }
 
-export default FormulaireApple;
+export default FormulaireAndroid;
