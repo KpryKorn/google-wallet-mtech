@@ -14,6 +14,7 @@ const customDownloadPath = path.join(__dirname, "../CarteAdherent.pkpass");
 
 // middleware pour gérer les corps de requêtes PUT et POST
 router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({ extended: true }));
 
 // gère les requêtes spécifiques à iOS sous "/api/apple"
 router.get("/apple", (req, res, next) => {
@@ -205,7 +206,7 @@ async function createPassObject(req, res) {
     cardTitle: {
       defaultValue: {
         language: "fr-FR",
-        value: "MCFLY Marty",
+        value: req.body.nom,
       },
     },
     subheader: {
@@ -224,7 +225,7 @@ async function createPassObject(req, res) {
       {
         id: "numSecuSociale",
         header: "N° SÉCURITÉ SOCIALE",
-        body: "2 73 12 22 000 000 55",
+        body: req.body.numSecuSociale,
       },
       {
         id: "periodeValidite",
@@ -333,6 +334,8 @@ async function createPassObject(req, res) {
 }
 
 router.post("/android", async (req, res) => {
+  console.log(req.body);
+
   const classCreated = await createPassClass();
   if (classCreated) {
     await createPassObject(req, res);

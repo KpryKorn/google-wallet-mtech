@@ -22,15 +22,16 @@ function FormulaireAndroid({ appleData, onAppleDataChange }) {
     onAppleDataChange(updatedNameData);
   }
 
-  // TODO : handle Android Data Change
+  // Requête POST url-encoded + bouton d'ajout au wallet
   function handleSubmit(e) {
     e.preventDefault();
     const nom = e.target.nom.value;
+    const numSecuSociale = e.target.numSecuSociale.value;
 
     fetch("http://localhost:3000/api/android", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `nom=${nom}`, // envoi les données modifiées
+      body: `nom=${nom}&numSecuSociale=${numSecuSociale}`, // envoi les données modifiées
     })
       .then((response) => {
         setShowToast(true);
