@@ -25,20 +25,19 @@ function FormulaireAndroid({ appleData, onAppleDataChange }) {
   // TODO : handle Android Data Change
   function handleSubmit(e) {
     e.preventDefault();
+    const nom = e.target.nom.value;
 
-    fetch("http://localhost:3000/api/apple", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(appleData), // envoi les données modifiées
+    fetch("http://localhost:3000/api/android", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `nom=${nom}`, // envoi les données modifiées
     })
       .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        console.log("Données enregistrées avec succès");
         setShowToast(true);
+        return response.text();
+      })
+      .then((button) => {
+        document.getElementById("button").innerHTML = button;
       })
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
@@ -71,7 +70,7 @@ function FormulaireAndroid({ appleData, onAppleDataChange }) {
           onChange={handleSecuInputChange}
         />
 
-        <div className={styles.formBtns}>
+        <div id="button" className={styles.formBtns}>
           <button type="submit">Sauvegarder</button>
           <a href="http://localhost:3000/api/apple/download">Télécharger</a>
         </div>
