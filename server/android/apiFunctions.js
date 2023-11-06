@@ -11,6 +11,12 @@ const httpClient = new GoogleAuth({
   scopes: "https://www.googleapis.com/auth/wallet_object.issuer",
 });
 
+/**
+ * Crée une classe de Pass Wallet
+ * @async
+ * @function createPassClass
+ * @returns {Promise<boolean>} Renvoie une promesse résolue avec la valeur true si la classe a été créée avec succès, sinon false.
+ */
 async function createPassClass() {
   const genericClass = {
     id: `${classId}`,
@@ -98,6 +104,12 @@ async function createPassClass() {
   return true;
 }
 
+/**
+ * Crée un objet de Pass Wallet pour Google Pay à partir des informations fournies dans la requête
+ * @param {Object} req - L'objet de requête
+ * @param {Object} res - L'objet de réponse
+ * @returns {Promise<void>} - Une promesse qui résout avec la réponse de la requête
+ */
 async function createPassObject(req, res) {
   let objectId;
   while (true) {
