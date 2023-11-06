@@ -43,7 +43,7 @@ httpClient
 /// Récupère un objet (pass) par son id
 httpClient
   .request({
-    url: `${baseUrl}/genericObject/3388000000022272047.encoreNouveauPassId`, // TODO : remplacer code dur par id de l'objet dynamique (input)
+    url: `${baseUrl}/genericObject/3388000000022272047.encoreNouveauPassId`,
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,

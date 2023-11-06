@@ -2,7 +2,6 @@ import styles from "./FormulaireAdherent.module.css";
 import Toast from "../UI/Toast";
 import { useState } from "react";
 
-// TODO : fetch Android Data
 function FormulaireAndroid({ appleData, onAppleDataChange }) {
   const [showToast, setShowToast] = useState(false);
 

@@ -2,7 +2,6 @@ import styles from "./PassAdherent.module.css";
 import LogoMGEN from "/logo-mgen.png";
 
 function PassAndroid(props) {
-  // TODO : fetch Android Data
   return (
     <>
       <div className={styles.passContainer}>
